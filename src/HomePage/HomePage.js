@@ -8,9 +8,7 @@ class HomePage extends Component {
         return(
             <main role="main">
                 <section>
-                    <header>
-                        <NavLink to='/venue-list'>Venues</NavLink>
-                    </header>
+                        <NavLink to='/venue-list'><img src='../Pictures/banquets-candlelights-chairs-1616113.jpg'></img></NavLink>
                 </section>
                 <section>
                     <header>

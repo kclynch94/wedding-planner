@@ -1,8 +1,51 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import './LandingPage.css';
+import {storeToken} from '../Services/auth-service';
+import config from '../config';
+import ApiContext from '../ApiContext';
 
 class LandingPage extends Component {
+    static contextType = ApiContext;
+
+    state = {
+        errorMessage: ""
+    }
+
+    handleSubmit = e => {
+        e.preventDefault()
+        const { first_name, last_name, email, password } = e.target
+        const newUser = {
+            user_first_name: first_name.value,
+            user_last_name: last_name.value,
+            user_email: email.value,
+            user_password: password.value
+        }
+        fetch(`${config.API_ENDPOINT}/auth/signup`, {
+            method: 'POST',
+            body: JSON.stringify(newUser),
+            headers: {
+              'content-type': 'application/json',
+              'authorization': `bearer ${config.API_KEY}`
+            },
+          })
+          .then(res => {
+            if (!res.ok){
+              return res.json().then(error => Promise.reject(error))
+            }
+            return res.json()
+          })
+          .then((data) => {
+            storeToken(data.user.user_token, data.user.user_email)
+            this.context.setCurrentUser(data.user)
+            window.location.href="/home"
+          })
+          .catch(error => {
+            console.error(error)
+            this.setState({ errorMessage: "There is already an account associated with that email address" })
+          })
+    }
+
 
     render() {
         return (
@@ -26,24 +69,25 @@ class LandingPage extends Component {
                     <header>
                         <h3>Plan your dream wedding!</h3>
                     </header>
-                    <form class='signup-form'>
+                    <form id='signup-form' className='signup-form' onSubmit={this.handleSubmit}>
                         <div>
-                        <label for="first-name">First name</label>
-                        <input placeholder='First Name' type="text" name='first-name' id='first-name' />
+                        <label htmlFor="first-name">First name</label>
+                        <input placeholder='First Name' type="text" name='first_name' id='first-name' />
                         </div>
                         <div>
-                        <label for="last-name">Last name</label>
-                        <input type="text" name='last-name' id='last-name' placeholder='Last Name' />
+                        <label htmlFor="last-name">Last name</label>
+                        <input type="text" name='last_name' id='last-name' placeholder='Last Name' />
                         </div>
                         <div>
-                        <label for="username">Email</label>
-                        <input type="text" name='username' id='username' />
+                        <label htmlFor="email">Email</label>
+                        <input type="email" name='email' id='email' />
                         </div>
                         <div>
-                        <label for="password">Password</label>
+                        <label htmlFor="password">Password</label>
                         <input type="password" name='password' id='password' />
                         </div>
-                        <NavLink to='/home'>Sign Up</NavLink>
+                        <p>{this.state.errorMessage}</p>
+                        <button type='submit'>Sign Up</button>
                     </form>
                 </section>
             </main>

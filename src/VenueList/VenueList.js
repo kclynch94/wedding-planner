@@ -1,45 +1,35 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import './VenueList.css';
+import Venue from '../Venue/Venue'
+import ApiContext from '../ApiContext';
 
 class VenueList extends Component {
+    static contextType = ApiContext;
 
     render() {
+        let listVenues = this.context.venues.map(v => (
+                <li className='venue' key={v.id}>
+                    <Venue
+                        venueId={v.id}
+                        venueName={v.venue_name}
+                        venueWebsite={v.venue_website}
+                        venuePrice={v.venue_price}
+                        venueRating={v.venue_rating}
+                        venueCapacity={v.venue_capacity}
+                        venuePros={v.venue_pros}
+                        venueCons={v.venue_cons}
+                        user_id={v.user_id} />
+                </li>
+            ));
+            
         return(
-            <main role="main">
-                <header role="banner">
-                    <h1>Venues</h1>
-                </header>
-                <section>
-                    <header>
-                        <h2>Venue 1</h2>
-                    </header>
-                    <p>Description:</p><span>This venue has a rustic feel with its barnyard theme.</span>
-                    <p>Price:</p><span>$5,000</span><br></br>
-                    <a href="www.weddingvenue.com">Website</a>
-                    <p>Capacity:</p><span>200</span>
-                    <p>Overall Rating: </p><span>4</span><br></br>
-
-                    <NavLink to='/edit-venue/1'>Edit Venue</NavLink>
-                    <button>Delete Venue</button>
-                </section>
-                <section>
-                    <header>
-                        <h2>Venue 2</h2>
-                    </header>
-                    <p>Description:</p><span>This venue has an elegant feel with its ball room reception and vineyard asthetic.</span>
-                    <p>Price:</p><span>$10,000</span><br></br>
-                    <a href="www.expensiveweddingvenue.com">Website</a>
-                    <p>Capacity:</p><span>250</span>
-                    <p>Overall Rating: </p><span>5</span><br></br>
-
-                    <NavLink to='/edit-venue/2'>Edit Venue</NavLink>
-                    <button>Delete Venue</button>
-                </section>
-                <section>
-                    <NavLink to='add-venue'>Add Venue</NavLink>
-                </section>
-            </main>
+            <section className="venueList">
+                <ul>
+                    {listVenues}
+                </ul> 
+                <NavLink className="likeAButton" to={`/add-venue`}>Add Venue</NavLink>  
+            </section>
         )
     }
 }

@@ -1,43 +1,35 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import './FloristList.css';
+import Florist from '../Florist/Florist'
+import ApiContext from '../ApiContext';
+
 
 class FloristList extends Component {
+    static contextType = ApiContext;
 
     render() {
+        let listFlorists = this.context.florists.map(f => (
+                <li className='florist' key={f.id}>
+                    <Florist
+                        floristId={f.id}
+                        floristName={f.florist_name}
+                        floristWebsite={f.florist_website}
+                        floristPrice={f.florist_price}
+                        floristRating={f.florist_rating}
+                        floristPros={f.florist_pros}
+                        floristCons={f.florist_cons}
+                        user_id={f.user_id} />
+                </li>
+            ));
+            
         return(
-            <main role="main">
-                <header role="banner">
-                    <h1>Florists</h1>
-                </header>
-                <section>
-                    <header>
-                        <h2>Florist 1</h2>
-                    </header>
-                    <p>Description:</p><span>Really captures emotion</span>
-                    <p>Price:</p><span>$5,000</span><br></br>
-                    <a href="www.weddingvenue.com">Website</a>
-                    <p>Overall Rating: </p><span>4</span><br></br>
-
-                    <NavLink to='/edit-florist/1'>Edit florist</NavLink>
-                    <button>Delete florist</button>
-                </section>
-                <section>
-                    <header>
-                        <h2>Florist 2</h2>
-                    </header>
-                    <p>Description:</p><span>Not as good, but more affordable</span>
-                    <p>Price:</p><span>$2,000</span><br></br>
-                    <a href="www.expensiveweddingvenue.com">Website</a>
-                    <p>Overall Rating: </p><span>5</span><br></br>
-
-                    <NavLink to='/edit-florist/2'>Edit florist</NavLink>
-                    <button>Delete florist</button>
-                </section>
-                <section>
-                    <NavLink to='add-florist'>Add Florist</NavLink>
-                </section>
-            </main>
+            <section className="floristList">
+                <ul>
+                    {listFlorists}
+                </ul> 
+                <NavLink className="likeAButton" to={`/add-florist`}>Add Florist</NavLink>  
+            </section>
         )
     }
 }
