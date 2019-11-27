@@ -14,19 +14,17 @@ class EditPhotographer extends Component {
         }
     }
 
-    constructor (props) {
-        super(props);
-        this.proInput = React.createRef();
-        this.conInput = React.createRef();
-    }
-
     state = {
     }
 
     static contextType = ApiContext;
 
+    constructor (props) {
+        super(props);
+        this.proInput = React.createRef();
+        this.conInput = React.createRef();  
+    }
     
-
     handleSubmit = e => {
         e.preventDefault()
         const currentPhotographer = this.context.photographers.find(p => p.id === +this.props.match.params.photographerId)
@@ -71,25 +69,27 @@ class EditPhotographer extends Component {
     handleAddPro = e => {
         let pros = this.state.pros
         if (!pros){
-            pros = this.context.photographers.find(p => p.id === +this.props.match.params.photographerId).photographer_pros.split(',')
+            pros = this.context.photographers.find(p => p.id === +this.props.match.params.photographerId).photographer_pros
         }
-        pros.push(this.proInput.current.value)
+        pros.push({pro_content: this.proInput.current.value})
+        this.proInput.current.value = ""
         this.setState({pros})
     }
 
     handleAddCon = e => {
         let cons = this.state.cons
         if (!cons){
-            cons = this.context.photographers.find(p => p.id === +this.props.match.params.photographerId).photographer_cons.split(',')
+            cons = this.context.photographers.find(p => p.id === +this.props.match.params.photographerId).photographer_cons
         }
-        cons.push(this.conInput.current.value)
+        cons.push({con_content: this.conInput.current.value})
+        this.conInput.current.value = ""
         this.setState({cons})
     }
 
     handleDeletePro = i => {
         let pros = this.state.pros
         if (!pros){
-            pros = this.context.photographers.find(p => p.id === +this.props.match.params.photographerId).photographer_pros.split(',')
+            pros = this.context.photographers.find(p => p.id === +this.props.match.params.photographerId).photographer_pros
         }
         pros.splice(i, 1)
         this.setState({pros})
@@ -99,25 +99,21 @@ class EditPhotographer extends Component {
     handleDeleteCon = i => {
         let cons = this.state.cons
         if (!cons){
-            cons = this.context.photographers.find(p => p.id === +this.props.match.params.photographerId).photographer_cons.split(',')
+            cons = this.context.photographers.find(p => p.id === +this.props.match.params.photographerId).photographer_cons
         }
         cons.splice(i, 1)
         this.setState({cons})
     }
 
     pickPros(currentPhotographer) {
-        if (!this.state.pros && !Array.isArray(currentPhotographer.photographer_pros)){
-            return currentPhotographer.photographer_pros.split(',')
-        } else if (Array.isArray(currentPhotographer.photographer_pros)) {
+        if (!this.state.pros ){
             return currentPhotographer.photographer_pros
         }
-        return this.state.pros
+        return this.state.pros 
     }
 
     pickCons(currentPhotographer) {
-        if (!this.state.cons && !Array.isArray(currentPhotographer.photographer_cons)){
-            return currentPhotographer.photographer_cons.split(',')
-        } else if (Array.isArray(currentPhotographer.photographer_cons)) {
+        if (!this.state.cons){
             return currentPhotographer.photographer_cons
         }
         return this.state.cons
@@ -153,19 +149,48 @@ class EditPhotographer extends Component {
                             <label htmlFor="photographer_price">Price</label>
                             <input type="number" name="photographer_price" defaultValue={currentPhotographer.photographer_price}></input>
                         </div>
-                        <div className="form-section">
-                            <label htmlFor="photographer_rating">Overall Rating</label>
-                            <input type="text" name="photographer_rating" defaultValue={currentPhotographer.photographer_rating}></input>
+                        <div className="rating">
+                            <label>
+                                <input type="radio" name="photographer_rating" defaultChecked={+currentPhotographer.photographer_rating === 1} value="1" />
+                                <span className="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="photographer_rating" defaultChecked={+currentPhotographer.photographer_rating === 2} value="2" />
+                                <span className="icon">★</span>
+                                <span className="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="photographer_rating" defaultChecked={+currentPhotographer.photographer_rating === 3} value="3" />
+                                <span className="icon">★</span>
+                                <span className="icon">★</span>
+                                <span className="icon">★</span>   
+                            </label>
+                            <label>
+                                <input type="radio" name="photographer_rating" defaultChecked={+currentPhotographer.photographer_rating === 4} value="4" />
+                                <span className="icon">★</span>
+                                <span className="icon">★</span>
+                                <span className="icon">★</span>
+                                <span className="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="photographer_rating" defaultChecked={+currentPhotographer.photographer_rating === 5} value="5" />
+                                <span className="icon">★</span>
+                                <span className="icon">★</span>
+                                <span className="icon">★</span>
+                                <span className="icon">★</span>
+                                <span className="icon">★</span>
+                            </label>
                         </div>
                         <div className="form-section">
                             <label htmlFor="photographer_pros">Pros</label>
-                            <input ref={this.proInput} type="text" name="photographer_pros"></input>
+                            <input ref={this.proInput} type="text" name="photographer_pros"></input>              
                             <button type='button' onClick={this.handleAddPro}> Add </button>
+                            {this.state.proInputError && (<div>You must enter a value.</div>)}
                         </div>
                         <div>
                             {this.pickPros(currentPhotographer).map((p, i) => {
                                 return (<div key={i}>
-                                    {p}
+                                    {p.pro_content}
                                     <button type='button' onClick={() => this.handleDeletePro(i)}>&times;</button>
                                 </div>)
                             })}
@@ -178,7 +203,7 @@ class EditPhotographer extends Component {
                         <div>
                             {this.pickCons(currentPhotographer).map((c, i) => {
                                 return (<div key={i}>
-                                    {c}
+                                    {c.con_content}
                                     <button type='button' onClick={() => this.handleDeleteCon(i)}>&times;</button>
                                 </div>)
                             })}

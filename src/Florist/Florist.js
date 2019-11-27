@@ -38,16 +38,32 @@ class Florist extends Component {
         })
 
     }
+
+    createStarRating = rating => {
+      let starRating = []
+      for(let i = 0; i < rating; i++) {
+        starRating.push(<span class="icon">★</span>)
+      }
+      return starRating
+    }
+
     render() {
         const { floristName, floristWebsite, floristPrice, floristRating, floristPros, floristCons, floristId} = this.props
         return (
-            <div className='florist'>
+            <div>
                 <h3>{floristName}</h3>
-                <a href={floristWebsite}>Website</a>
-                <p>${floristPrice}</p>
-                <p>{floristRating}</p>
-                <p>{floristPros}</p>
-                <p>{floristCons}</p>
+                {floristWebsite && (<a href={floristWebsite}>Website</a>)}
+                {floristPrice && (<p>${floristPrice}</p>)}
+                <p>Overall Rating:</p>
+                <div>
+                  {this.createStarRating(floristRating)}
+                </div>
+                {(floristPros.length>0) && (<ul>Pros: {floristPros.map(p => (
+                  <li>{p.pro_content}</li>
+                ))}</ul>)}
+                {(floristCons.length>0) && (<ul>Cons: {floristCons.map(c => (
+                  <li>{c.con_content}</li>
+                ))}</ul>)}
                 <NavLink className='likeAButton' to={`edit-florist/${floristId}`}>Edit Florist</NavLink>
                 <button onClick={this.handleDeleteFlorist}>Delete Florist</button>
 

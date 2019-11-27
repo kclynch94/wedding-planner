@@ -38,17 +38,33 @@ class Venue extends Component {
         })
 
     }
+
+    createStarRating = rating => {
+      let starRating = []
+      for(let i = 0; i < rating; i++) {
+        starRating.push(<span key={`${i}-icon`} className="icon">★</span>)
+      }
+      return starRating
+    }
+
     render() {
         const { venueName, venueWebsite, venuePrice, venueRating, venueCapacity, venuePros, venueCons, venueId} = this.props
         return (
-            <div className='venue'>
+            <div>
                 <h3>{venueName}</h3>
-                <a href={venueWebsite}>Website</a>
-                <p>${venuePrice}</p>
-                <p>{venueRating}</p>
-                <p>{venueCapacity}</p>
-                <p>{venuePros}</p>
-                <p>{venueCons}</p>
+                {venueWebsite && (<a href={venueWebsite}>Website</a>)}
+                {venuePrice && (<p>Price: ${venuePrice}</p>)}
+                <p>Overall Rating:</p>
+                <div>
+                  {this.createStarRating(venueRating)}
+                </div>
+                {venueCapacity && (<p>Capacity: {venueCapacity}</p>)}
+                {(venuePros.length>0) && (<ul>Pros: {venuePros.map(p => (
+                  <li>{p.pro_content}</li>
+                ))}</ul>)}
+                {(venueCons.length>0) && (<ul>Cons: {venueCons.map(c => (
+                  <li>{c.con_content}</li>
+                ))}</ul>)}
                 <NavLink className='likeAButton' to={`edit-venue/${venueId}`}>Edit Venue</NavLink>
                 <button onClick={this.handleDeleteVenue}>Delete Venue</button>
 

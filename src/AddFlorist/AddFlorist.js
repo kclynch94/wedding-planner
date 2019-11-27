@@ -68,12 +68,14 @@ class AddFlorist extends Component {
     handleAddPro = e => {
         let pros = this.state.pros
         pros.push(this.proInput.current.value)
+        this.proInput.current.value = ""
         this.setState({pros})
     }
 
     handleAddCon = e => {
         let cons = this.state.cons
         cons.push(this.conInput.current.value)
+        this.conInput.current.value = ""
         this.setState({cons})
     }
 
@@ -109,9 +111,38 @@ class AddFlorist extends Component {
                         <label htmlFor="florist_price">Price</label>
                         <input type="number" name="florist_price" placeholder="$5000"></input>
                     </div>
-                    <div className="form-section">
-                        <label htmlFor="florist_rating">Overall Rating</label>
-                        <input type="text" name="florist_rating" required></input>
+                    <p>Overall Rating</p>
+                    <div className="rating">
+                        <label>
+                            <input type="radio" name="florist_rating" value="1" />
+                            <span class="icon">★</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="florist_rating" value="2" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="florist_rating" value="3" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>   
+                        </label>
+                        <label>
+                            <input type="radio" name="florist_rating" value="4" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="florist_rating" value="5" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                        </label>
                     </div>
                     <div className="form-section">
                         <label htmlFor="florist_pros">Pros</label>

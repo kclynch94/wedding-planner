@@ -36,7 +36,7 @@ class AddPhotographer extends Component {
             photographer_price: photographer_price.value,
             photographer_rating: photographer_rating.value,
             photographer_pros: this.state.pros,
-            photographer_cons:this.state.cons,
+            photographer_cons: this.state.cons,
             user_id: this.context.currentUser.id
         }
         fetch(`${config.API_ENDPOINT}/photographers`, {
@@ -68,12 +68,14 @@ class AddPhotographer extends Component {
     handleAddPro = e => {
         let pros = this.state.pros
         pros.push(this.proInput.current.value)
+        this.proInput.current.value = ""
         this.setState({pros})
     }
 
     handleAddCon = e => {
         let cons = this.state.cons
         cons.push(this.conInput.current.value)
+        this.conInput.current.value = ""
         this.setState({cons})
     }
 
@@ -109,9 +111,38 @@ class AddPhotographer extends Component {
                         <label htmlFor="photographer_price">Price</label>
                         <input type="number" name="photographer_price" placeholder="$5000"></input>
                     </div>
-                    <div className="form-section">
-                        <label htmlFor="photographer_rating">Overall Rating</label>
-                        <input type="text" name="photographer_rating" required></input>
+                    <p>Overall Rating</p>
+                    <div className="rating">
+                        <label>
+                            <input type="radio" name="photographer_rating" value="1" />
+                            <span class="icon">★</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="photographer_rating" value="2" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="photographer_rating" value="3" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>   
+                        </label>
+                        <label>
+                            <input type="radio" name="photographer_rating" value="4" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="photographer_rating" value="5" />
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                            <span class="icon">★</span>
+                        </label>
                     </div>
                     <div className="form-section">
                         <label htmlFor="photographer_pros">Pros</label>

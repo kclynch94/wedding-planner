@@ -12,18 +12,18 @@ class GuestList extends Component {
 
         this.context.guests.forEach(function(g) {
             if (g.guest_type === 'Out of town' && g.guest_plus_one === "Yes") {
-                guestEstimate = guestEstimate + .85
+                return guestEstimate = guestEstimate + .85
             } else if(g.guest_type === 'Out of town' && g.guest_plus_one === "No") {
-                guestEstimate = guestEstimate + .55
-            } else if (g.guest_type == 'Local' && g.guest_plus_one === "Yes") {
-                guestEstimate = guestEstimate + 1.45
-            } else if(g.guest_type == 'Local' && g.guest_plus_one === "No") {
-                guestEstimate = guestEstimate + .85
+                return guestEstimate = guestEstimate + .55
+            } else if (g.guest_type === 'Local' && g.guest_plus_one === "Yes") {
+                return guestEstimate = guestEstimate + 1.45
+            } else if(g.guest_type === 'Local' && g.guest_plus_one === "No") {
+                return guestEstimate = guestEstimate + .85
             }
         })
 
         let listGuests = this.context.guests.map(g => (
-                <li className='guest' key={g.id}>
+                <div className='item' key={g.id}>
                     <Guest
                         guestId={g.id}
                         guestFirstName={g.guest_first_name}
@@ -32,17 +32,19 @@ class GuestList extends Component {
                         guestPlusOne={g.guest_plus_one}
                         guestAddress={g.guest_address}
                         user_id={g.user_id} />
-                </li>
+                </div>
             ));
             
         return(
-            <section className="guestList">
-                <h3>You can expect approx. {guestEstimate} guests at your wedding</h3>
-                <ul>
-                    {listGuests}
-                </ul> 
-                <NavLink className="likeAButton" to={`/add-guest`}>Add Guest</NavLink>  
-            </section>
+                <div className='list-container'>
+                    <h2>You can expect {guestEstimate.toFixed(0)} guests to show up to your wedding</h2>
+                    <section className={listGuests.length>4 ? "item-list-3" : (listGuests.length<3 ? "item-list-1" : "item-list-2")}>
+                        {listGuests}             
+                    </section>
+                    <div className='add-item'>
+                        <NavLink className="cssCircle plusSign" to={`/add-guest`}>&#43;</NavLink>  
+                    </div>
+                </div>
         )
     }
 }

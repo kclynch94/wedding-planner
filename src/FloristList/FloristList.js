@@ -10,7 +10,7 @@ class FloristList extends Component {
 
     render() {
         let listFlorists = this.context.florists.map(f => (
-                <li className='florist' key={f.id}>
+                <div className='item' key={f.id}>
                     <Florist
                         floristId={f.id}
                         floristName={f.florist_name}
@@ -20,16 +20,18 @@ class FloristList extends Component {
                         floristPros={f.florist_pros}
                         floristCons={f.florist_cons}
                         user_id={f.user_id} />
-                </li>
+                </div>
             ));
             
         return(
-            <section className="floristList">
-                <ul>
-                    {listFlorists}
-                </ul> 
-                <NavLink className="likeAButton" to={`/add-florist`}>Add Florist</NavLink>  
-            </section>
+            <div className='list-container'>
+                <section className={listFlorists.length>4 ? "item-list-3" : (listFlorists.length<3 ? "item-list-1" : "item-list-2")}>
+                    {listFlorists}             
+                </section>
+                <div className='add-item'>
+                    <NavLink className="cssCircle plusSign" to={`/add-florist`}>&#43;</NavLink>  
+                </div>
+            </div>
         )
     }
 }

@@ -72,25 +72,27 @@ class EditCaterer extends Component {
     handleAddPro = e => {
         let pros = this.state.pros
         if (!pros){
-            pros = this.context.caterers.find(c => c.id === +this.props.match.params.catererId).caterer_pros.split(',')
+            pros = this.context.caterers.find(c => c.id === +this.props.match.params.catererId).caterer_pros
         }
-        pros.push(this.proInput.current.value)
+        pros.push({pro_content: this.proInput.current.value})
+        this.proInput.current.value = ""
         this.setState({pros})
     }
 
     handleAddCon = e => {
         let cons = this.state.cons
         if (!cons){
-            cons = this.context.caterers.find(c => c.id === +this.props.match.params.catererId).caterer_cons.split(',')
+            cons = this.context.caterers.find(c => c.id === +this.props.match.params.catererId).caterer_cons
         }
-        cons.push(this.conInput.current.value)
+        cons.push({con_content: this.conInput.current.value})
+        this.conInput.current.value = ""
         this.setState({cons})
     }
 
     handleDeletePro = i => {
         let pros = this.state.pros
         if (!pros){
-            pros = this.context.caterers.find(c => c.id === +this.props.match.params.catererId).caterer_pros.split(',')
+            pros = this.context.caterers.find(c => c.id === +this.props.match.params.catererId).caterer_pros
         }
         pros.splice(i, 1)
         this.setState({pros})
@@ -100,25 +102,21 @@ class EditCaterer extends Component {
     handleDeleteCon = i => {
         let cons = this.state.cons
         if (!cons){
-            cons = this.context.caterers.find(c => c.id === +this.props.match.params.catererId).caterer_cons.split(',')
+            cons = this.context.caterers.find(c => c.id === +this.props.match.params.catererId).caterer_cons
         }
         cons.splice(i, 1)
         this.setState({cons})
     }
 
     pickPros(currentCaterer) {
-        if (!this.state.pros && !Array.isArray(currentCaterer.caterer_pros)){
-            return currentCaterer.caterer_pros.split(',')
-        } else if (Array.isArray(currentCaterer.caterer_pros)) {
+        if (!this.state.pros ){
             return currentCaterer.caterer_pros
         }
-        return this.state.pros
+        return this.state.pros 
     }
 
     pickCons(currentCaterer) {
-        if (!this.state.cons && !Array.isArray(currentCaterer.caterer_cons)){
-            return currentCaterer.caterer_cons.split(',')
-        } else if (Array.isArray(currentCaterer.caterer_cons)) {
+        if (!this.state.cons){
             return currentCaterer.caterer_cons
         }
         return this.state.cons
@@ -154,9 +152,38 @@ class EditCaterer extends Component {
                             <label htmlFor="caterer_price">Price</label>
                             <input type="number" name="caterer_price" defaultValue={currentCaterer.caterer_price}></input>
                         </div>
-                        <div className="form-section">
-                            <label htmlFor="caterer_rating">Overall Rating</label>
-                            <input type="text" name="caterer_rating" defaultValue={currentCaterer.caterer_rating}></input>
+                        <p>Overall Rating</p>
+                        <div className="rating">
+                            <label>
+                                <input type="radio" name="caterer_rating" defaultChecked={+currentCaterer.caterer_rating === 1} value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="caterer_rating" defaultChecked={+currentCaterer.caterer_rating === 2} value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="caterer_rating" defaultChecked={+currentCaterer.caterer_rating === 3} value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>   
+                            </label>
+                            <label>
+                                <input type="radio" name="caterer_rating" defaultChecked={+currentCaterer.caterer_rating === 4} value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="caterer_rating" defaultChecked={+currentCaterer.caterer_rating === 5} value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
                         </div>
                         <div className="form-section">
                             <label htmlFor="caterer_type">Type</label>
@@ -170,7 +197,7 @@ class EditCaterer extends Component {
                         <div>
                             {this.pickPros(currentCaterer).map((p, i) => {
                                 return (<div key={i}>
-                                    {p}
+                                    {p.pro_content}
                                     <button type='button' onClick={() => this.handleDeletePro(i)}>&times;</button>
                                 </div>)
                             })}
@@ -183,7 +210,7 @@ class EditCaterer extends Component {
                         <div>
                             {this.pickCons(currentCaterer).map((c, i) => {
                                 return (<div key={i}>
-                                    {c}
+                                    {c.con_content}
                                     <button type='button' onClick={() => this.handleDeleteCon(i)}>&times;</button>
                                 </div>)
                             })}

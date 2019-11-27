@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import EditCaterer from './EditCaterer';
+import { BrowserRouter } from 'react-router-dom'
+import App from './App';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  const props = {
-    match: { params: {} },
-    history: {
-      push: () => {}
-    },
-  }
-  ReactDOM.render(<EditCaterer {...props} />, div);
+  ReactDOM.render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+    div
+  );
   ReactDOM.unmountComponentAtNode(div);
 });

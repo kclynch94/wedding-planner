@@ -38,16 +38,32 @@ class Photographer extends Component {
         })
 
     }
+
+    createStarRating = rating => {
+      let starRating = []
+      for(let i = 0; i < rating; i++) {
+        starRating.push(<span key={i} className="icon">★</span>)
+      }
+      return starRating
+    }
+
     render() {
         const { photographerName, photographerWebsite, photographerPrice, photographerRating, photographerPros, photographerCons, photographerId} = this.props
         return (
-            <div className='photographer'>
+            <div>
                 <h3>{photographerName}</h3>
-                <a href={photographerWebsite}>Website</a>
-                <p>${photographerPrice}</p>
-                <p>{photographerRating}</p>
-                <p>{photographerPros}</p>
-                <p>{photographerCons}</p>
+                {photographerWebsite && (<a href={photographerWebsite}>Website</a>)}
+                {photographerPrice && (<p>Price: ${photographerPrice}</p>)}
+                <p>Overall Rating:</p>
+                <div>
+                  {this.createStarRating(photographerRating)}
+                </div>
+                {(photographerPros.length>0) && (<ul>Pros: {photographerPros.map(p => (
+                  <li>{p.pro_content}</li>
+                ))}</ul>)}
+                {(photographerCons.length>0) && (<ul>Cons: {photographerCons.map(c => (
+                  <li>{c.con_content}</li>
+                ))}</ul>)}
                 <NavLink className='likeAButton' to={`edit-photographer/${photographerId}`}>Edit Photographer</NavLink>
                 <button onClick={this.handleDeletePhotographer}>Delete Photographer</button>
 

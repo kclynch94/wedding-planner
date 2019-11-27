@@ -9,7 +9,7 @@ class VenueList extends Component {
 
     render() {
         let listVenues = this.context.venues.map(v => (
-                <li className='venue' key={v.id}>
+                <div className='item' key={v.id}>
                     <Venue
                         venueId={v.id}
                         venueName={v.venue_name}
@@ -20,16 +20,18 @@ class VenueList extends Component {
                         venuePros={v.venue_pros}
                         venueCons={v.venue_cons}
                         user_id={v.user_id} />
-                </li>
+                </div>
             ));
             
         return(
-            <section className="venueList">
-                <ul>
-                    {listVenues}
-                </ul> 
-                <NavLink className="likeAButton" to={`/add-venue`}>Add Venue</NavLink>  
-            </section>
+            <div className='list-container'>
+                <section className={listVenues.length>4 ? "item-list-3" : (listVenues.length<3 ? "item-list-1" : "item-list-2")}>
+                    {listVenues}             
+                </section>
+                <div className='add-item'>
+                    <NavLink className="cssCircle plusSign" to={`/add-venue`}>&#43;</NavLink>  
+                </div>
+            </div>
         )
     }
 }

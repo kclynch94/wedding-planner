@@ -71,53 +71,50 @@ class EditVenue extends Component {
     handleAddPro = e => {
         let pros = this.state.pros
         if (!pros){
-            pros = this.context.venues.find(v => v.id === +this.props.match.params.venueId).venue_pros.split(',')
+            pros = this.context.venues.find(v => v.id === +this.props.match.params.venueId).venue_pros
         }
-        pros.push(this.proInput.current.value)
+        pros.push({pro_content: this.proInput.current.value})
+        this.proInput.current.value = ""
         this.setState({pros})
     }
 
     handleAddCon = e => {
         let cons = this.state.cons
         if (!cons){
-            cons = this.context.venues.find(v => v.id === +this.props.match.params.venueId).venue_cons.split(',')
+            cons = this.context.venues.find(v => v.id === +this.props.match.params.venueId).venue_cons
         }
-        cons.push(this.conInput.current.value)
+        cons.push({con_content: this.conInput.current.value})
+        this.conInput.current.value = ""
         this.setState({cons})
     }
 
     handleDeletePro = i => {
         let pros = this.state.pros
         if (!pros){
-            pros = this.context.venues.find(v => v.id === +this.props.match.params.venueId).venue_pros.split(',')
+            pros = this.context.venues.find(v => v.id === +this.props.match.params.venueId).venue_pros
         }
         pros.splice(i, 1)
         this.setState({pros})
-        
     }
 
     handleDeleteCon = i => {
         let cons = this.state.cons
         if (!cons){
-            cons = this.context.venues.find(v => v.id === +this.props.match.params.venueId).venue_cons.split(',')
+            cons = this.context.venues.find(v => v.id === +this.props.match.params.venueId).venue_cons
         }
         cons.splice(i, 1)
         this.setState({cons})
     }
 
     pickPros(currentVenue) {
-        if (!this.state.pros && !Array.isArray(currentVenue.venue_pros)){
-            return currentVenue.venue_pros.split(',')
-        } else if (Array.isArray(currentVenue.venue_pros)) {
+        if (!this.state.pros ){
             return currentVenue.venue_pros
         }
-        return this.state.pros
+        return this.state.pros 
     }
 
     pickCons(currentVenue) {
-        if (!this.state.cons && !Array.isArray(currentVenue.venue_cons)){
-            return currentVenue.venue_cons.split(',')
-        } else if (Array.isArray(currentVenue.venue_cons)) {
+        if (!this.state.cons){
             return currentVenue.venue_cons
         }
         return this.state.cons
@@ -153,38 +150,39 @@ class EditVenue extends Component {
                             <label htmlFor="venue_price">Price</label>
                             <input type="number" name="venue_price" defaultValue={currentVenue.venue_price}></input>
                         </div >
+                        <p>Overall Rating</p>
                         <div className="rating">
-                        <label>
-                            <input type="radio" name="venue_rating" checked={+currentVenue.venue_rating === 1} value="1" />
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="venue_rating" checked={+currentVenue.venue_rating === 2} value="2" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="venue_rating" checked={+currentVenue.venue_rating === 3} value="3" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>   
-                        </label>
-                        <label>
-                            <input type="radio" name="venue_rating" checked={+currentVenue.venue_rating === 4} value="4" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="venue_rating" checked={+currentVenue.venue_rating === 5} value="5" />
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                            <span class="icon">★</span>
-                        </label>
-                    </div>
+                            <label>
+                                <input type="radio" name="venue_rating" defaultChecked={+currentVenue.venue_rating === 1} value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="venue_rating" defaultChecked={+currentVenue.venue_rating === 2} value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="venue_rating" defaultChecked={+currentVenue.venue_rating === 3} value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>   
+                            </label>
+                            <label>
+                                <input type="radio" name="venue_rating" defaultChecked={+currentVenue.venue_rating === 4} value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="venue_rating" defaultChecked={+currentVenue.venue_rating === 5} value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                        </div>
                         <div className="form-section">
                             <label htmlFor="venue_capacity">Capacity</label>
                             <input type="number" name="venue_capacity" defaultValue={currentVenue.venue_capacity}></input>
@@ -197,7 +195,7 @@ class EditVenue extends Component {
                         <div>
                             {this.pickPros(currentVenue).map((p, i) => {
                                 return (<div key={i}>
-                                    {p}
+                                    {p.pro_content}
                                     <button type='button' onClick={() => this.handleDeletePro(i)}>&times;</button>
                                 </div>)
                             })}
@@ -210,7 +208,7 @@ class EditVenue extends Component {
                         <div>
                             {this.pickCons(currentVenue).map((c, i) => {
                                 return (<div key={i}>
-                                    {c}
+                                    {c.con_content}
                                     <button type='button' onClick={() => this.handleDeleteCon(i)}>&times;</button>
                                 </div>)
                             })}

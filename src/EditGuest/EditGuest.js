@@ -14,10 +14,6 @@ class EditGuest extends Component {
         }
     }
 
-    constructor (props) {
-        super(props);
-    }
-
     state = {
     }
 
@@ -26,7 +22,6 @@ class EditGuest extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        const currentGuest = this.context.guests.find(g => g.id === +this.props.match.params.guestId)
         const guestId = this.props.match.params.guestId
         const { guest_first_name, guest_last_name, guest_type, guest_address, guest_plus_one } = e.target
         const newGuest = {

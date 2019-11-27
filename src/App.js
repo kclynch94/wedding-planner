@@ -24,6 +24,8 @@ import {getToken, deleteToken} from './Services/auth-service';
 import {getData} from './Services/data-service';
 import {Redirect} from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import './App.css'
+import $ from "jquery"
 
 class App extends Component {
   constructor(props) {
@@ -54,7 +56,6 @@ class App extends Component {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Bearer ${config.API_KEY}`
       },
       body: JSON.stringify({'token': getToken().token})
      })
@@ -62,9 +63,17 @@ class App extends Component {
     this.setState({ currentUser: user})
   }
   componentDidMount() {
-   console.log('Component Did Mount') 
+    $(window).scroll(function () {
+      if($(this).scrollTop()>10){
+          $('nav').addClass('background')
+          $('.header .menu li a').css('color', 'white')
+      } else {
+          $('nav').removeClass('background')
+          $('.header .menu li a').css('color', 'black')
+      }
+  })
       if(!!getToken().token) { 
-        getData()
+        return getData()
         .then(([users, venues, caterers, photographers, florists, guests]) => {
           this.setState({ users, venues, caterers, photographers, florists, guests })
         })
@@ -265,17 +274,21 @@ class App extends Component {
       setCaterers: this.setCaterers,
       setPhotographers: this.setPhotographers,
       setFlorists: this.setFlorists,
-      setGuests: this.setGuests
+      setGuests: this.setGuests,
+    
     }
     return (
       <ApiContext.Provider value={value}>
         <div className='App'>
-          <header className='App_header'>
+          <nav className='App_header fade'>
             <h1>
               <Link className='header_link' to='/'>Wedding Planner</Link>
             </h1>
-    {!!getToken().token ? (<button onClick={() => this.logout()}>Logout</button>) : (<NavLink to='/login'>Login</NavLink>)}
-          </header>
+            <div className='nav_buttons'>
+              <Link className='home_button' to='/home'><img alt="Home Icon" src={require('./Pictures/home-solid.svg')}/></Link>
+              {!!getToken().token ? (<button onClick={() => this.logout()}>Logout</button>) : (<NavLink to='/login'>Login</NavLink>)}
+            </div>
+          </nav>
           <main className='App_main'>
           <Route
                   render = {

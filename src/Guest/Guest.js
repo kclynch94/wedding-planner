@@ -41,11 +41,11 @@ class Guest extends Component {
     render() {
         const { guestFirstName, guestLastName, guestType, guestPlusOne, guestAddress, guestId} = this.props
         return (
-            <div className='guest'>
+            <div>
                 <h3>{guestFirstName} {guestLastName}</h3>
-                <p>Will they come? {guestType}</p>
-                <p>Plus One? {guestPlusOne}</p>
-                <p>Address: {guestAddress}</p>
+                {guestType && (<p>Where are they coming from?: {guestType}</p>)}
+                {guestPlusOne && (<p>Plus One?: {guestPlusOne}</p>)}
+                {guestAddress && (<p>Address: {guestAddress}</p>)}
                 <NavLink className='likeAButton' to={`edit-guest/${guestId}`}>Edit Guest</NavLink>
                 <button onClick={this.handleDeleteGuest}>Delete Guest</button>
 

@@ -15,10 +15,6 @@ class AddGuest extends Component {
     }
 
     static contextType = ApiContext;
-
-    constructor (props) {
-        super(props);
-    }
     
     state = {
     }

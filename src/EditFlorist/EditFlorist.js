@@ -71,25 +71,27 @@ class EditFlorist extends Component {
     handleAddPro = e => {
         let pros = this.state.pros
         if (!pros){
-            pros = this.context.florists.find(f => f.id === +this.props.match.params.floristId).florist_pros.split(',')
+            pros = this.context.florists.find(f => f.id === +this.props.match.params.floristId).florist_pros
         }
-        pros.push(this.proInput.current.value)
+        pros.push({pro_content: this.proInput.current.value})
+        this.proInput.current.value = ""
         this.setState({pros})
     }
 
     handleAddCon = e => {
         let cons = this.state.cons
         if (!cons){
-            cons = this.context.florists.find(f => f.id === +this.props.match.params.floristId).florist_cons.split(',')
+            cons = this.context.florists.find(f => f.id === +this.props.match.params.floristId).florist_cons
         }
-        cons.push(this.conInput.current.value)
+        cons.push({con_content: this.conInput.current.value})
+        this.conInput.current.value = ""
         this.setState({cons})
     }
 
     handleDeletePro = i => {
         let pros = this.state.pros
         if (!pros){
-            pros = this.context.florists.find(f => f.id === +this.props.match.params.floristId).florist_pros.split(',')
+            pros = this.context.florists.find(f => f.id === +this.props.match.params.floristId).florist_pros
         }
         pros.splice(i, 1)
         this.setState({pros})
@@ -99,25 +101,21 @@ class EditFlorist extends Component {
     handleDeleteCon = i => {
         let cons = this.state.cons
         if (!cons){
-            cons = this.context.florists.find(f => f.id === +this.props.match.params.floristId).florist_cons.split(',')
+            cons = this.context.florists.find(f => f.id === +this.props.match.params.floristId).florist_cons
         }
         cons.splice(i, 1)
         this.setState({cons})
     }
 
     pickPros(currentFlorist) {
-        if (!this.state.pros && !Array.isArray(currentFlorist.florist_pros)){
-            return currentFlorist.florist_pros.split(',')
-        } else if (Array.isArray(currentFlorist.florist_pros)) {
+        if (!this.state.pros ){
             return currentFlorist.florist_pros
         }
         return this.state.pros
     }
 
     pickCons(currentFlorist) {
-        if (!this.state.cons && !Array.isArray(currentFlorist.florist_cons)){
-            return currentFlorist.florist_cons.split(',')
-        } else if (Array.isArray(currentFlorist.florist_cons)) {
+        if (!this.state.cons){
             return currentFlorist.florist_cons
         }
         return this.state.cons
@@ -153,9 +151,37 @@ class EditFlorist extends Component {
                             <label htmlFor="florist_price">Price</label>
                             <input type="number" name="florist_price" defaultValue={currentFlorist.florist_price}></input>
                         </div>
-                        <div className="form-section">
-                            <label htmlFor="florist_rating">Overall Rating</label>
-                            <input type="text" name="florist_rating" defaultValue={currentFlorist.florist_rating}></input>
+                        <div className="rating">
+                            <label>
+                                <input type="radio" name="florist_rating" defaultChecked={+currentFlorist.florist_rating === 1} value="1" />
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="florist_rating" defaultChecked={+currentFlorist.florist_rating === 2} value="2" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="florist_rating" defaultChecked={+currentFlorist.florist_rating === 3} value="3" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>   
+                            </label>
+                            <label>
+                                <input type="radio" name="florist_rating" defaultChecked={+currentFlorist.florist_rating === 4} value="4" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="florist_rating" defaultChecked={+currentFlorist.florist_rating === 5} value="5" />
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                                <span class="icon">★</span>
+                            </label>
                         </div>
                         <div className="form-section">
                             <label htmlFor="florist_pros">Pros</label>
@@ -165,7 +191,7 @@ class EditFlorist extends Component {
                         <div>
                             {this.pickPros(currentFlorist).map((p, i) => {
                                 return (<div key={i}>
-                                    {p}
+                                    {p.pro_content}
                                     <button type='button' onClick={() => this.handleDeletePro(i)}>&times;</button>
                                 </div>)
                             })}
@@ -178,7 +204,7 @@ class EditFlorist extends Component {
                         <div>
                             {this.pickCons(currentFlorist).map((c, i) => {
                                 return (<div key={i}>
-                                    {c}
+                                    {c.con_content}
                                     <button type='button' onClick={() => this.handleDeleteCon(i)}>&times;</button>
                                 </div>)
                             })}

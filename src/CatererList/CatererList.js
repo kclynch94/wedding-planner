@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import './CatererList.css';
 import Caterer from '../Caterer/Caterer'
-import config from '../config';
 import ApiContext from '../ApiContext';
-import {Redirect} from 'react-router-dom';
-import {getToken} from '../Services/auth-service';
 
 class CatererList extends Component {
     static contextType = ApiContext;
@@ -13,7 +10,7 @@ class CatererList extends Component {
     render() {
       console.log('caterers render')
         let listCaterers = this.context.caterers.map(c => (
-                <li className='caterer' key={c.id}>
+                <div className='item' key={c.id}>
                     <Caterer
                         catererId={c.id}
                         catererName={c.caterer_name}
@@ -24,16 +21,18 @@ class CatererList extends Component {
                         catererPros={c.caterer_pros}
                         catererCons={c.caterer_cons}
                         user_id={c.user_id} />
-                </li>
+                </div>
             ));
             
         return(
-            <section className="catererList">
-                <ul>
-                    {listCaterers}
-                </ul> 
-                <NavLink className="likeAButton" to={`/add-caterer`}>Add Caterer</NavLink>  
-            </section>
+            <div className='list-container'>
+                <section className={listCaterers.length>4 ? "item-list-3" : (listCaterers.length<3 ? "item-list-1" : "item-list-2")}>
+                    {listCaterers}             
+                </section>
+                <div className='add-item'>
+                    <NavLink className="cssCircle plusSign" to={`/add-caterer`}>&#43;</NavLink>  
+                </div>
+            </div>
         )
     }
 }

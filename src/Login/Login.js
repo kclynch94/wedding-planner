@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import config from '../config';
 import {storeToken} from '../Services/auth-service';
 import ApiContext from '../ApiContext';
@@ -23,13 +24,12 @@ class Login extends Component {
             body: JSON.stringify(newUser),
             headers: {
               'content-type': 'application/json',
-              'authorization': `bearer ${config.API_KEY}`
             },
           })
           .then(res => {
-            if (!res.ok){
-              return res.json().then(error => Promise.reject(error))
+            if (!res.ok){return res.json().then(error => Promise.reject(error))
             }
+              
             this.setState({errorMessage: ''})
             return res.json() 
           })
@@ -74,7 +74,7 @@ class Login extends Component {
                     <button type='submit'>Log In</button>
                 </form>
                 <p>{this.state.errorMessage}</p>
-                <p>Don't have an account?</p><a href="http://localhost:3000/#signup-form">Signup here</a>
+                <p>Don't have an account?</p><Link to="/#signup-form">Signup here</Link>
             </section>
         )
     }

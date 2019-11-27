@@ -9,7 +9,7 @@ class PhotographerList extends Component {
 
     render() {
         let listPhotographers = this.context.photographers.map(p => (
-                <li className='photographer' key={p.id}>
+                <div className='item' key={p.id}>
                     <Photographer
                         photographerId={p.id}
                         photographerName={p.photographer_name}
@@ -19,16 +19,18 @@ class PhotographerList extends Component {
                         photographerPros={p.photographer_pros}
                         photographerCons={p.photographer_cons}
                         user_id={p.user_id} />
-                </li>
+                </div>
             ));
             
         return(
-            <section className="photographerList">
-                <ul>
-                    {listPhotographers}
-                </ul> 
-                <NavLink className="likeAButton" to={`/add-photographer`}>Add Photographer</NavLink>  
-            </section>
+            <div className='list-container'>
+                <section className={listPhotographers.length>4 ? "item-list-3" : (listPhotographers.length<3 ? "item-list-1" : "item-list-2")}>
+                    {listPhotographers}             
+                </section>
+                <div className='add-item'>
+                    <NavLink className="cssCircle plusSign" to={`/add-photographer`}>&#43;</NavLink>  
+                </div>
+            </div>
         )
     }
 }

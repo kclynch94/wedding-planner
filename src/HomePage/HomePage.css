@@ -10,34 +10,21 @@
     text-align: center;
     line-height: 1.5;
     min-width: 320px;
+    background-color: #737A55;
   }
-  
-  nav,
-  footer {
-    padding: 1% 0;
-    background-color: #aaa;
+
+  .container section {
+    position: relative;
+    text-align: center;
+    color: black;
   }
-  
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-  }
-  
-  header {
-    padding: 45px 15px;
-  }
-  
-  section {
-    min-height: 200px;
-    padding: 30px 15px;
-    background-color: #bbb;
-  }
-  
-  section:nth-child(even) {
-    background-color: #ddd;
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
   }
   
   p {
@@ -58,14 +45,82 @@
     max-width: 500px;
   }
   
-  input[type="number"] {
-    width: 50px;
-  }
-  
   label {
     display: block;
   }
   
   .form-section {
     margin-bottom: 30px;
+  }
+
+  .container {
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 25px;
+  }
+
+  .container section{
+    display: flex; 
+    flex-basis: calc(50% - 40px);  
+    justify-content: center;
+    flex-direction: column;
+    height: 200px;
+    width: 200px;
+  }
+
+  .container section div {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .venues{
+    background-image: url('../Pictures/venue.jpg');
+    background-color: rgba(32, 31, 29, 0.5); 
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .caterers{
+    background-image: url('../Pictures/caterer.jpg');
+    background-color: rgba(32, 31, 29, 0.5); 
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .florists{
+    background-image: url('../Pictures/florist.jpg');
+    background-color: rgba(32, 31, 29, 0.5); 
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .photographers{
+    background-image: url('../Pictures/photographer.jpg');
+    background-color: rgba(32, 31, 29, 0.5); 
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .guests{
+    background-image: url('../Pictures/guest.jpg');
+    background-color: rgba(32, 31, 29, 0.5); 
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .music{
+    background-image: url('../Pictures/music.jpg');
+    background-color: rgba(32, 31, 29, 0.5); 
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
   }

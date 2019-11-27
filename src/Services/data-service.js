@@ -7,14 +7,12 @@ const getData = () => {
           method: 'GET',
           headers: {
             'content-type': 'application/json',
-            'Authorization': `Bearer ${config.API_KEY}`
           }
         }),
         fetch(`${config.API_ENDPOINT}/venues`, {
           method: 'GET',
           headers: {
             'content-type': 'application/json',
-            'Authorization': `Bearer ${config.API_KEY}`,
             'token': getToken().token,
             'user_email': getToken().user_email
           }
@@ -23,7 +21,6 @@ const getData = () => {
           method: 'GET',
           headers: {
             'content-type': 'application/json',
-            'Authorization': `Bearer ${config.API_KEY}`,
             'token': getToken().token,
             'user_email': getToken().user_email
           }
@@ -32,7 +29,6 @@ const getData = () => {
           method: 'GET',
           headers: {
             'content-type': 'application/json',
-            'Authorization': `Bearer ${config.API_KEY}`,
             'token': getToken().token,
             'user_email': getToken().user_email
           }
@@ -41,7 +37,6 @@ const getData = () => {
           method: 'GET',
           headers: {
             'content-type': 'application/json',
-            'Authorization': `Bearer ${config.API_KEY}`,
             'token': getToken().token,
             'user_email': getToken().user_email
           }
@@ -50,7 +45,8 @@ const getData = () => {
           method: 'GET',
           headers: {
             'content-type': 'application/json',
-            'Authorization': `Bearer ${config.API_KEY}`
+            'token': getToken().token,
+            'user_email': getToken().user_email
           }
         })
       ])

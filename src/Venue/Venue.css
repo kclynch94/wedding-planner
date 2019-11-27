@@ -1,0 +1,14 @@
+.venue{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.venue button {
+    width: 100%;  
+}
+
+.venue .icon {
+    color: #09f;
+    font-size: 20px;
+}

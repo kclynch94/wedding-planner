@@ -1,50 +1,58 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: "Open Sans",
-    sans-serif;
-    font-size: 20px;
-    color: #444;
-    text-align: center;
-    line-height: 1.5;
-  }
-  
-  nav,
-  footer {
-    padding: 1% 0;
-    background-color: #aaa;
-  }
-  
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-  }
-  
-  header {
-    padding: 45px 15px;
-  }
-  
-  section {
-    min-height: 200px;
-    padding: 30px 15px;
-    background-color: #bbb;
-  }
-  
-  section:nth-child(even) {
-    background-color: #ddd;
-  }
-  
-  p {
-    margin: 0 auto;
-    max-width: 650px;
-  }
-  
-  p + p {
-    margin-top: 15px;
-  }
-  
+.home-page-container{
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg,#737A55,#595F42);
+    color:  white;
+    padding-top: 75px;
+}
+
+.home-page-header, .home-page-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    flex: 1;
+}
+
+.home-page-image img{
+    height: 500px;
+    width: auto;
+    object-fit: cover;
+    padding: 40px;
+    border-radius: 50px;
+}
+
+.white_background {
+    background-color: white;
+    background-clip: content-box;
+}
+
+.home-page-header {
+    padding-left: 100px;
+    text-align: left;
+    padding-top: 20px;
+}
+header h3 {
+    margin-top: 0;
+}
+
+.home-page-header h1, .home-page-header p {
+    padding-right: 50px;
+}
+
+.home-page-header h1 {
+    font-size: 40px;
+    line-height: 1.2;
+}
+
+@media screen and (min-width: 768px) {
+    .home-page-container{
+        flex-direction: row;
+    }
+
+    .home-page-image{
+        height: 100%;
+    }
+}
+
+
+

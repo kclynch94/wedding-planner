@@ -1,0 +1,81 @@
+form {
+    background-color: white;
+    text-align: center;
+}
+
+input {
+    width: 50%;
+    text-align: center;
+    padding: 14px;
+}
+
+button {
+    background: white;
+    border-width: 1px;
+    border-color: #CDCDCD;
+    text-align: center;
+    padding: 15px 32px;
+    
+}
+
+.nav_buttons{
+    display: flex;
+    flex-direction: row;
+}
+
+.home_button{
+    width: 20px;
+}
+
+.App_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+main .container {
+    padding-top: 75px;
+}
+
+.background {
+    background-color: #737A55;  
+}
+
+.fade {
+    transition: .5s;
+}
+
+.App_header button {
+    padding: 5px 5px;
+    height: 10%;
+    margin-right: 30px;
+    margin-left: 20px;
+    border-radius: 5px;
+    color: rgb(143, 151, 105);
+}
+
+.App_header h1 {
+    color: white;
+    text-decoration: none;
+}
+
+.header_link {
+    color:white;
+    padding-left: 30px;
+}
+
+a {
+    text-decoration: none;
+}
