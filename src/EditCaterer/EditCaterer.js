@@ -134,7 +134,7 @@ class EditCaterer extends Component {
             )
         } else {
             return(
-                <main role="main">
+                <main className="add_form" role="main">
                     <header>
                         <h1>Edit Caterer</h1>
                     </header>
@@ -187,36 +187,40 @@ class EditCaterer extends Component {
                         </div>
                         <div className="form-section">
                             <label htmlFor="caterer_type">Type</label>
-                            <input type="number" name="caterer_type" defaultValue={currentCaterer.caterer_type}></input>
+                            <input type="text" name="caterer_type" defaultValue={currentCaterer.caterer_type}></input>
                         </div>
                         <div className="form-section">
                             <label htmlFor="caterer_pros">Pros</label>
-                            <input ref={this.proInput} type="text" name="caterer_pros"></input>
-                            <button type='button' onClick={this.handleAddPro}> Add </button>
+                            <div className="add_flex">
+                                <input className="comparison_input" ref={this.proInput} type="text" name="caterer_pros"></input>
+                                <button className="add_button" type='button' onClick={this.handleAddPro}> Add </button>
+                            </div>
                         </div>
                         <div>
                             {this.pickPros(currentCaterer).map((p, i) => {
-                                return (<div key={i}>
+                                return (<div className="display_flex justify_content_center align_items_center" key={i}>
                                     {p.pro_content}
-                                    <button type='button' onClick={() => this.handleDeletePro(i)}>&times;</button>
+                                    <button className="x_button" type='button' onClick={() => this.handleDeletePro(i)}>&times;</button>
                                 </div>)
                             })}
                         </div>
                         <div className="form-section">
                             <label htmlFor="caterer_cons">Cons</label>
-                            <input ref={this.conInput} type="text" name="caterer_cons"></input>
-                            <button type='button' onClick={this.handleAddCon}> Add </button>
+                            <div className="add_flex">
+                                <input className="comparison_input" ref={this.conInput} type="text" name="caterer_cons"></input>
+                                <button className="add_button" type='button' onClick={this.handleAddCon}> Add </button>
+                            </div>
                         </div>
                         <div>
                             {this.pickCons(currentCaterer).map((c, i) => {
-                                return (<div key={i}>
+                                return (<div className="display_flex justify_content_center align_items_center" key={i}>
                                     {c.con_content}
-                                    <button type='button' onClick={() => this.handleDeleteCon(i)}>&times;</button>
+                                    <button className="x_button" type='button' onClick={() => this.handleDeleteCon(i)}>&times;</button>
                                 </div>)
                             })}
                         </div>
 
-                        <button type='submit'>Save Changes</button>
+                        <button className="add_module" type='submit'>Save Changes</button>
                         </form>
                     </section>
                 </main>

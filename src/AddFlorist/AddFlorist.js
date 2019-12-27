@@ -93,7 +93,7 @@ class AddFlorist extends Component {
 
     render() {
         return(
-            <main role="main">
+            <main className="add_form" role="main">
                 <header>
                     <h1>New Florist</h1>
                 </header>
@@ -146,32 +146,36 @@ class AddFlorist extends Component {
                     </div>
                     <div className="form-section">
                         <label htmlFor="florist_pros">Pros</label>
-                        <input ref={this.proInput} type="text" name="florist_pros"></input>
-                        <button type='button' onClick={this.handleAddPro}> Add </button>
+                        <div className="add_flex">
+                            <input className="comparison_input" ref={this.proInput} type="text" name="florist_pros"></input>
+                            <button className="add_button" type='button' onClick={this.handleAddPro}> Add </button>
+                        </div>
                     </div>
                     <div>
                         {this.state.pros.map((p, i) => {
-                            return (<div key={i}>
+                            return (<div className="display_flex justify_content_center align_items_center" key={i}>
                                 {p}
-                                <button type='button' onClick={() => this.handleDeletePro(i)}>&times;</button>
+                                <button className="x_button" type='button' onClick={() => this.handleDeletePro(i)}>&times;</button>
                             </div>)
                         })}
                     </div>
                     <div className="form-section">
                         <label htmlFor="florist_cons">Cons</label>
-                        <input ref={this.conInput} type="text" name="florist_cons"></input>
-                        <button type='button' onClick={this.handleAddCon}> Add </button>
+                        <div className="add_flex">
+                            <input className="comparison_input" ref={this.conInput} type="text" name="florist_cons"></input>
+                            <button className="add_button" type='button' onClick={this.handleAddCon}> Add </button>
+                        </div>
                     </div>
                     <div>
                         {this.state.cons.map((c, i) => {
-                            return (<div key={i}>
+                            return (<div className="display_flex justify_content_center align_items_center" key={i}>
                                 {c}
-                                <button type='button' onClick={() => this.handleDeleteCon(i)}>&times;</button>
+                                <button className="x_button" type='button' onClick={() => this.handleDeleteCon(i)}>&times;</button>
                             </div>)
                         })}
                     </div>
 
-                    <button type='submit'>Add Florist</button>
+                    <button className="add_module" type='submit'>Add Florist</button>
                     </form>
                 </section>
             </main>

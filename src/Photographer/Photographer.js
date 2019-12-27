@@ -50,11 +50,11 @@ class Photographer extends Component {
     render() {
         const { photographerName, photographerWebsite, photographerPrice, photographerRating, photographerPros, photographerCons, photographerId} = this.props
         return (
-            <div>
+            <div className="module">
                 <h3>{photographerName}</h3>
                 {photographerWebsite && (<a href={photographerWebsite}>Website</a>)}
                 {photographerPrice && (<p>Price: ${photographerPrice}</p>)}
-                <p>Overall Rating:</p>
+                {photographerRating > 0 && (<p>Overall Rating:</p>)}
                 <div>
                   {this.createStarRating(photographerRating)}
                 </div>

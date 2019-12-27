@@ -25,6 +25,7 @@ class VenueList extends Component {
             
         return(
             <div className='list-container'>
+                <h2 className='module-title'>Venues</h2>
                 <section className={listVenues.length>4 ? "item-list-3" : (listVenues.length<3 ? "item-list-1" : "item-list-2")}>
                     {listVenues}             
                 </section>

@@ -50,11 +50,11 @@ class Florist extends Component {
     render() {
         const { floristName, floristWebsite, floristPrice, floristRating, floristPros, floristCons, floristId} = this.props
         return (
-            <div>
+            <div className="module">
                 <h3>{floristName}</h3>
                 {floristWebsite && (<a href={floristWebsite}>Website</a>)}
                 {floristPrice && (<p>${floristPrice}</p>)}
-                <p>Overall Rating:</p>
+                {floristRating > 0 && (<p>Overall Rating:</p>)}
                 <div>
                   {this.createStarRating(floristRating)}
                 </div>

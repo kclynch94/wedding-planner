@@ -41,7 +41,7 @@ class Guest extends Component {
     render() {
         const { guestFirstName, guestLastName, guestType, guestPlusOne, guestAddress, guestId} = this.props
         return (
-            <div>
+            <div className="module">
                 <h3>{guestFirstName} {guestLastName}</h3>
                 {guestType && (<p>Where are they coming from?: {guestType}</p>)}
                 {guestPlusOne && (<p>Plus One?: {guestPlusOne}</p>)}

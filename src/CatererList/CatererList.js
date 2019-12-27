@@ -26,6 +26,7 @@ class CatererList extends Component {
             
         return(
             <div className='list-container'>
+                <h2 className='module-title'>Caterers</h2>
                 <section className={listCaterers.length>4 ? "item-list-3" : (listCaterers.length<3 ? "item-list-1" : "item-list-2")}>
                     {listCaterers}             
                 </section>

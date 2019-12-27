@@ -61,7 +61,7 @@ class EditGuest extends Component {
         const currentGuest = this.context.guests.find(g => g.id === +this.props.match.params.guestId)
         if(!currentGuest){
             return (
-                <main role="main">
+                <main className="add_form" role="main">
                     <header>
                         <h1>Edit Guest</h1>
                     </header>
@@ -69,7 +69,7 @@ class EditGuest extends Component {
             )
         } else {
             return(
-                <main role="main">
+                <main className="add_form" role="main">
                     <header>
                         <h1>Edit Guest</h1>
                     </header>
@@ -101,7 +101,8 @@ class EditGuest extends Component {
                             <option value="No">No</option>
                         </select>
                     </div>
-                    <button type='submit'>Save Changes</button>
+                    
+                    <button className="add_module" type='submit'>Save Changes</button>
                     </form>
                     </section>
                 </main>

@@ -50,15 +50,15 @@ class Caterer extends Component {
     render() {
         const { catererName, catererWebsite, catererPrice, catererRating, catererType, catererPros, catererCons, catererId} = this.props
         return (
-            <div>
+            <div className="module">
                 <h3>{catererName}</h3>
                 {catererWebsite && (<a href={catererWebsite}>Website</a>)}
                 {catererPrice && (<p>Price: ${catererPrice}</p>)}
-                <p>Overall Rating:</p>
+                {catererRating > 0 && (<p>Overall Rating:</p>)}
                 <div>
                   {this.createStarRating(catererRating)}
                 </div>
-                <p>Type of Food: {catererType}</p>
+                {catererType && (<p>Type of Food: {catererType}</p>)}
                 {(catererPros.length>0) && (<ul>Pros: {catererPros.map(p => (
                   <li>{p.pro_content}</li>
                 ))}</ul>)}
@@ -66,6 +66,7 @@ class Caterer extends Component {
                   <li>{c.con_content}</li>
                 ))}</ul>)}
                 <NavLink className='likeAButton' to={`edit-caterer/${catererId}`}>Edit Caterer</NavLink>
+                <span></span>
                 <button onClick={this.handleDeleteCaterer}>Delete Caterer</button>
 
             </div>

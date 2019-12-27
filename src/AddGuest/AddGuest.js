@@ -58,7 +58,7 @@ class AddGuest extends Component {
 
     render() {
         return(
-            <main role="main">
+            <main className="add_form" role="main">
                 <header>
                     <h1>New Guest</h1>
                 </header>
@@ -90,7 +90,7 @@ class AddGuest extends Component {
                             <option value="No">No</option>
                         </select>
                     </div>
-                    <button type='submit'>Add Guest</button>
+                    <button className="add_module" type='submit'>Add Guest</button>
                     </form>
                 </section>
             </main>

@@ -24,6 +24,7 @@ class PhotographerList extends Component {
             
         return(
             <div className='list-container'>
+                <h2 className='module-title'>Photographers</h2>
                 <section className={listPhotographers.length>4 ? "item-list-3" : (listPhotographers.length<3 ? "item-list-1" : "item-list-2")}>
                     {listPhotographers}             
                 </section>

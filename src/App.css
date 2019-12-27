@@ -1,22 +1,37 @@
 form {
-    background-color: white;
+    background-color: #A6A49A;
     text-align: center;
 }
 
 input {
-    width: 50%;
+    width: 200px;
     text-align: center;
     padding: 14px;
 }
 
-button {
+button, .likeAButton {
     background: white;
-    border-width: 1px;
-    border-color: #CDCDCD;
+    border: none;
     text-align: center;
-    padding: 15px 32px;
+    padding: 10px 0px;
+    width: 50%;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 15px;
+    margin-bottom: 5px;
+    padding-top: 5px;
     
 }
+
+  button:hover, .likeAButton:hover, .likeAButton:hover:visited {
+    color: white;
+    background-color: #92654C;
+  }
+
+  .likeAButton:visited {
+    color: black;
+  }
 
 .nav_buttons{
     display: flex;
@@ -63,7 +78,6 @@ main .container {
     margin-right: 30px;
     margin-left: 20px;
     border-radius: 5px;
-    color: rgb(143, 151, 105);
 }
 
 .App_header h1 {
@@ -72,10 +86,23 @@ main .container {
 }
 
 .header_link {
+    font-family: 'Girassol', cursive;
     color:white;
-    padding-left: 30px;
+    padding-left: 10px;
+    font-size: 25px;
 }
 
 a {
     text-decoration: none;
 }
+
+@media screen and (min-width: 768px) {
+    input {
+      width: 500px;
+    }
+
+    .header_link{
+        font-size: 50px;
+        padding-left: 30px;
+    }
+  }

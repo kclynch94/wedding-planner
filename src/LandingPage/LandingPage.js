@@ -4,6 +4,7 @@ import {storeToken} from '../Services/auth-service';
 import config from '../config';
 import ApiContext from '../ApiContext';
 import weddingPicture from '../Pictures/blurred-background-bouquet-bridal-948185.jpg';
+import venuePicture from '../Pictures/2019-12-27_1716.png';
 
 class LandingPage extends Component {
     static contextType = ApiContext;
@@ -75,6 +76,7 @@ class LandingPage extends Component {
                     <section >
                         <header>
                             <h3>Compare Options</h3>
+                            <img alt="Comparing wedding venues" src={venuePicture}></img>
                         </header>
                         
                     </section>
@@ -106,7 +108,7 @@ class LandingPage extends Component {
                             <input type="password" name='password' id='password' />
                             </div>
                             <p>{this.state.errorMessage}</p>
-                            <button type='submit'>Sign Up</button>
+                            <button className='signup_button' type='submit'>Sign Up</button>
                         </form>
                     </section>
                 </div>

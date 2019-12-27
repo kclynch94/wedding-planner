@@ -50,24 +50,32 @@
   }
 
   .item{
-    background-color: #eee;
+    background-color: #A6A49A;
     display: inline-block;
     margin: 0 0 1em;
     width: 100%;
+    text-align: center;
+  }
+
+  .item ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
   }
 
 .cssCircle:hover {
-  background: #3F69A0 ;
+  background: #92654C ;
   cursor: pointer;
 }
 
 .plusSign {
   position: fixed;
+  color: black;
   bottom: 40px;
   right: 20px;
   z-index: 1000;
   background-color:#fff;
-  border:1px solid red;    
+  border:2px solid black;    
   height:60px;
   border-radius:50%;
   -moz-border-radius:50%;
@@ -75,12 +83,20 @@
   width:60px;
   line-height: 1.1em;
   text-decoration: none;
-  font-size: 45px;
+  font-size: 43px;
   text-align: center;
 }
 
 .plusSign:hover {
   color: white;
+  border:2px solid white;
+}
+
+.module-title {
+  color: white;
+  font-size: 50px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 @media screen and (min-width: 768px) {

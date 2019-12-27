@@ -50,11 +50,11 @@ class Venue extends Component {
     render() {
         const { venueName, venueWebsite, venuePrice, venueRating, venueCapacity, venuePros, venueCons, venueId} = this.props
         return (
-            <div>
+            <div className="module">
                 <h3>{venueName}</h3>
                 {venueWebsite && (<a href={venueWebsite}>Website</a>)}
                 {venuePrice && (<p>Price: ${venuePrice}</p>)}
-                <p>Overall Rating:</p>
+                {venueRating > 0 && (<p>Overall Rating:</p>)}
                 <div>
                   {this.createStarRating(venueRating)}
                 </div>
@@ -66,6 +66,7 @@ class Venue extends Component {
                   <li>{c.con_content}</li>
                 ))}</ul>)}
                 <NavLink className='likeAButton' to={`edit-venue/${venueId}`}>Edit Venue</NavLink>
+                <span></span>
                 <button onClick={this.handleDeleteVenue}>Delete Venue</button>
 
             </div>
