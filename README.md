@@ -6,7 +6,7 @@ Here is the link to the [live app](https://kclynch94-wedding-planner.now.sh/).
 
 This app is designed to help people plan there weddings. With tons of options out there for each piece of a wedding it be hard to pick the right one and even keep track of all the options. Wedding planner allows you to log your favorites and compare them.
 
-![picture of the user interface](src\Pictures\2019-12-27_1716.png)
+![picture of the user interface](2019-12-27_1716.png)
 
 ## API Endpoints
 
