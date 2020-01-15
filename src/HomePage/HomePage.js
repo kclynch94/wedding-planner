@@ -5,7 +5,7 @@ class HomePage extends Component {
 
     render() {
         return(
-            <main className='container flex-container' role="main">
+            <main className='container flex-container margin-top' role="main">
                     <section className='venues'>
                             <NavLink to='/venue-list'>
                                 <div className="centered">

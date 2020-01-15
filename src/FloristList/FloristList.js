@@ -9,6 +9,7 @@ class FloristList extends Component {
     static contextType = ApiContext;
 
     render() {
+        //Create list of vendors
         let listFlorists = this.context.florists.map(f => (
                 <div className='item' key={f.id}>
                     <Florist

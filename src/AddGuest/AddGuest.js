@@ -65,27 +65,27 @@ class AddGuest extends Component {
                 <section>
                     <form id="record-guest" onSubmit={this.handleSubmit}>
                     <div className="form-section">
-                        <label htmlFor="guest_first_name">Firt Name</label>
-                        <input type="text" name="guest_first_name" required></input>
+                        <label htmlFor="guest_first_name">First Name</label>
+                        <input type="text" id="guest_first_name" name="guest_first_name" required></input>
                     </div>
                     <div className="form-section">
                         <label htmlFor="guest_last_name">Last Name</label>
-                        <input type="text" name="guest_last_name" required></input>
+                        <input type="text" id="guest_last_name" name="guest_last_name" required></input>
                     </div>
                     <div className="form-section">
                         <label htmlFor="guest_address">Address</label>
-                        <input type="text" name="guest_address"></input>
+                        <input type="text" id="guest_address" name="guest_address"></input>
                     </div>
                     <div className="form-section">
                         <label htmlFor="guest_type">Where are they?</label>
-                        <select name="guest_type" required>
+                        <select id="guest_type" name="guest_type" required>
                             <option value="Out of town">Out of town</option>
                             <option value="Local">Local</option>
                         </select>
                     </div>
                     <div className="form-section">
                         <label htmlFor="guest_plus_one">Will they get a plus one?</label>
-                        <select name="guest_plus_one" required>
+                        <select id="guest_plus_one" name="guest_plus_one" required>
                             <option value="Yes">Yes</option>
                             <option value="No">No</option>
                         </select>

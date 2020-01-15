@@ -70,7 +70,7 @@
   padding: 0px;
   width: 30px;
   height: 30px;
-  line-height: .88em;
+  line-height: 0em;
   margin-bottom: 0px;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .add_form {
-  margin-top: 100px;
+  margin-top: 125px;
 }
 
 .add_module{

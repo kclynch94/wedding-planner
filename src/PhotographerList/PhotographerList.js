@@ -8,6 +8,7 @@ class PhotographerList extends Component {
     static contextType = ApiContext;
 
     render() {
+        //Create list of vendors
         let listPhotographers = this.context.photographers.map(p => (
                 <div className='item' key={p.id}>
                     <Photographer

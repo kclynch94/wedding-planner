@@ -3,10 +3,10 @@
     flex-direction: column;
     background: linear-gradient(135deg,#737A55,#595F42);
     color:  white;
-    padding-top: 75px;
+    padding-top: 100px;
 }
 
-.home-page-header, .home-page-image{
+.home-page-header, .home-page-image, .home-page-image-2{
     display: flex;
     flex-direction: column;
     justify-content: top;
@@ -19,6 +19,14 @@
     object-fit: cover;
     padding: 30px;
     border-radius: 50px;
+    
+}
+
+.home-page-image-2 img{
+    height: 400px;
+    width: auto;
+    object-fit: contain;
+    opacity: .75;
 }
 
 .white_background {
@@ -49,6 +57,10 @@ p{
 .home-page-header h1 {
     font-size: 40px;
     line-height: 1.2;
+}
+
+.margin-top {
+    margin-top: 30px;
 }
 
 .signup_button {

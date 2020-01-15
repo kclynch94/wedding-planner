@@ -285,8 +285,8 @@ class App extends Component {
               <Link className='header_link' to='/'>Wedding Planner</Link>
             </h1>
             <div className='nav_buttons'>
-              <Link className='home_button' to='/home'><img alt="Home Icon" src={require('./Pictures/home-solid.svg')}/></Link>
-              {!!getToken().token ? (<button onClick={() => this.logout()}>Logout</button>) : (<NavLink to='/login'>Login</NavLink>)}
+              <Link to='/home'><img className='home_button' alt="Home Icon" src={require('./Pictures/home-solid.svg')}/></Link>
+              {!!getToken().token ? (<button className='buttonV2 margin-right' onClick={() => this.logout()}>Logout</button>) : (<NavLink className='buttonV2 margin-right' to='/login'>Login</NavLink>)}
             </div>
           </nav>
           <main className='App_main'>

@@ -8,7 +8,7 @@ class CatererList extends Component {
     static contextType = ApiContext;
 
     render() {
-      console.log('caterers render')
+        //Create list of vendors
         let listCaterers = this.context.caterers.map(c => (
                 <div className='item' key={c.id}>
                     <Caterer

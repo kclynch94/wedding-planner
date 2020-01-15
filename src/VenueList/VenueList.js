@@ -8,6 +8,7 @@ class VenueList extends Component {
     static contextType = ApiContext;
 
     render() {
+        //Create list of vendors
         let listVenues = this.context.venues.map(v => (
                 <div className='item' key={v.id}>
                     <Venue

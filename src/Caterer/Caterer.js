@@ -39,6 +39,7 @@ class Caterer extends Component {
 
     }
 
+    //Create star icons to visual display the rating
     createStarRating = rating => {
       let starRating = []
       for(let i = 0; i < rating; i++) {

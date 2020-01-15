@@ -74,9 +74,9 @@ class LandingPage extends Component {
                 </section>
                 <div className="white_background">
                     <section >
-                        <header>
-                            <h3>Compare Options</h3>
-                            <img alt="Comparing wedding venues" src={venuePicture}></img>
+                        <header className="home-page-image-2" >
+                            <h3 className="margin-top margin-bottom">Compare Options</h3>
+                            <p>Record your favorite vendors as you come across them. Record important details like website, price, pros, cons, etc. Then compare your options and choose the best vendor for you.</p>
                         </header>
                         
                     </section>
