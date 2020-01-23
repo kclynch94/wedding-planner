@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import config from '../config';
 import './Photographer.css';
 import ApiContext from '../ApiContext';
@@ -45,7 +44,7 @@ class Photographer extends Component {
       for(let i = 0; i < rating; i++) {
         starRating.push(<span key={i} className="icon">★</span>)
       }
-      return starRating
+      return starRating;
     }
 
     render() {
@@ -59,13 +58,13 @@ class Photographer extends Component {
                 <div>
                   {this.createStarRating(photographerRating)}
                 </div>
-                {(photographerPros.length>0) && (<ul>Pros: {photographerPros.map(p => (
+                {(photographerPros && photographerPros.length>0) && (<ul>Pros: {photographerPros.map(p => (
                   <li>{p.pro_content}</li>
                 ))}</ul>)}
-                {(photographerCons.length>0) && (<ul>Cons: {photographerCons.map(c => (
+                {(photographerCons && photographerCons.length>0) && (<ul>Cons: {photographerCons.map(c => (
                   <li>{c.con_content}</li>
                 ))}</ul>)}
-                <NavLink className='likeAButton' to={`edit-photographer/${photographerId}`}>Edit Photographer</NavLink>
+                <a className='likeAButton' href={`edit-photographer/${photographerId}`}>Edit Photographer</a>
                 <button onClick={this.handleDeletePhotographer}>Delete Photographer</button>
 
             </div>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import config from '../config';
 import './Florist.css';
 import ApiContext from '../ApiContext';
@@ -45,7 +44,7 @@ class Florist extends Component {
       for(let i = 0; i < rating; i++) {
         starRating.push(<span class="icon">★</span>)
       }
-      return starRating
+      return starRating;
     }
 
     render() {
@@ -59,13 +58,13 @@ class Florist extends Component {
                 <div>
                   {this.createStarRating(floristRating)}
                 </div>
-                {(floristPros.length>0) && (<ul>Pros: {floristPros.map(p => (
+                {(floristPros && floristPros.length>0) && (<ul>Pros: {floristPros.map(p => (
                   <li>{p.pro_content}</li>
                 ))}</ul>)}
-                {(floristCons.length>0) && (<ul>Cons: {floristCons.map(c => (
+                {(floristCons && floristCons.length>0) && (<ul>Cons: {floristCons.map(c => (
                   <li>{c.con_content}</li>
                 ))}</ul>)}
-                <NavLink className='likeAButton' to={`edit-florist/${floristId}`}>Edit Florist</NavLink>
+                <a className='likeAButton' href={`edit-florist/${floristId}`}>Edit Florist</a>
                 <button onClick={this.handleDeleteFlorist}>Delete Florist</button>
 
             </div>

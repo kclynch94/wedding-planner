@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import config from '../config';
 import './Caterer.css';
 import ApiContext from '../ApiContext';
@@ -45,7 +44,7 @@ class Caterer extends Component {
       for(let i = 0; i < rating; i++) {
         starRating.push(<span class="icon">★</span>)
       }
-      return starRating
+      return starRating;
     }
 
     render() {
@@ -60,13 +59,13 @@ class Caterer extends Component {
                   {this.createStarRating(catererRating)}
                 </div>
                 {catererType && (<p>Type of Food: {catererType}</p>)}
-                {(catererPros.length>0) && (<ul>Pros: {catererPros.map(p => (
+                {(catererPros && catererPros.length>0) && (<ul>Pros: {catererPros.map(p => (
                   <li>{p.pro_content}</li>
                 ))}</ul>)}
-                {(catererCons.length>0) && (<ul>Cons: {catererCons.map(c => (
+                {(catererCons && catererCons.length>0) && (<ul>Cons: {catererCons.map(c => (
                   <li>{c.con_content}</li>
                 ))}</ul>)}
-                <NavLink className='likeAButton' to={`edit-caterer/${catererId}`}>Edit Caterer</NavLink>
+                <a className='likeAButton' href={`edit-caterer/${catererId}`}>Edit Caterer</a>
                 <span></span>
                 <button onClick={this.handleDeleteCaterer}>Delete Caterer</button>
 

@@ -33,7 +33,6 @@ const getCurrentUser = () => {
         return userRes.json()
       }).then((user) => {
       if(user.user_email) {
-        console.log('Set User') 
         this.setState({
           currentUser: user
         })

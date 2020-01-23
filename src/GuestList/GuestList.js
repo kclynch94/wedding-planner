@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import './GuestList.css';
 import Guest from '../Guest/Guest'
 import ApiContext from '../ApiContext';
@@ -42,7 +41,7 @@ class GuestList extends Component {
                         {listGuests}             
                     </section>
                     <div className='add-item'>
-                        <NavLink className="cssCircle plusSign" to={`/add-guest`}>&#43;</NavLink>  
+                        <a className="cssCircle plusSign" href={`/add-guest`}>&#43;</a>  
                     </div>
                 </div>
         )

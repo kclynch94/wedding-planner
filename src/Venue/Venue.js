@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import config from '../config';
 import './Venue.css';
 import ApiContext from '../ApiContext';
@@ -45,7 +44,7 @@ class Venue extends Component {
       for(let i = 0; i < rating; i++) {
         starRating.push(<span key={`${i}-icon`} className="icon">★</span>)
       }
-      return starRating
+      return starRating;
     }
 
     render() {
@@ -60,13 +59,13 @@ class Venue extends Component {
                   {this.createStarRating(venueRating)}
                 </div>
                 {venueCapacity && (<p>Capacity: {venueCapacity}</p>)}
-                {(venuePros.length>0) && (<ul>Pros: {venuePros.map(p => (
+                {(venuePros && venuePros.length>0) && (<ul>Pros: {venuePros.map(p => (
                   <li>{p.pro_content}</li>
                 ))}</ul>)}
-                {(venueCons.length>0) && (<ul>Cons: {venueCons.map(c => (
+                {(venueCons && venueCons.length>0) && (<ul>Cons: {venueCons.map(c => (
                   <li>{c.con_content}</li>
                 ))}</ul>)}
-                <NavLink className='likeAButton' to={`edit-venue/${venueId}`}>Edit Venue</NavLink>
+                <a className='likeAButton' href={`edit-venue/${venueId}`}>Edit Venue</a>
                 <span></span>
                 <button onClick={this.handleDeleteVenue}>Delete Venue</button>
 

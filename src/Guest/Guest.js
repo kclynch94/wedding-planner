@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import config from '../config';
 import './Guest.css';
 import ApiContext from '../ApiContext';
@@ -46,7 +45,7 @@ class Guest extends Component {
                 {guestType && (<p>Where are they coming from?: {guestType}</p>)}
                 {guestPlusOne && (<p>Plus One?: {guestPlusOne}</p>)}
                 {guestAddress && (<p>Address: {guestAddress}</p>)}
-                <NavLink className='likeAButton' to={`edit-guest/${guestId}`}>Edit Guest</NavLink>
+                <a className='likeAButton' href={`edit-guest/${guestId}`}>Edit Guest</a>
                 <button onClick={this.handleDeleteGuest}>Delete Guest</button>
 
             </div>

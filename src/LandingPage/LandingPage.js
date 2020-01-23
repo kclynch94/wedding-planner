@@ -4,7 +4,6 @@ import {storeToken} from '../Services/auth-service';
 import config from '../config';
 import ApiContext from '../ApiContext';
 import weddingPicture from '../Pictures/blurred-background-bouquet-bridal-948185.jpg';
-import venuePicture from '../Pictures/2019-12-27_1716.png';
 
 class LandingPage extends Component {
     static contextType = ApiContext;
@@ -75,7 +74,7 @@ class LandingPage extends Component {
                 <div className="white_background">
                     <section >
                         <header className="home-page-image-2" >
-                            <h3 className="margin-top margin-bottom">Compare Options</h3>
+                            <h3 className="margin-bottom">Compare Options</h3>
                             <p>Record your favorite vendors as you come across them. Record important details like website, price, pros, cons, etc. Then compare your options and choose the best vendor for you.</p>
                         </header>
                         
@@ -84,7 +83,7 @@ class LandingPage extends Component {
                         <header>
                             <h3>Count Your Guests</h3>
                         </header>
-                        <p>Defining your guest list can be the most stressful part of planning a wedding. Use the Wedding Planner to keep track of which guests are out if town, which are family, which are in the bridal party. The Wedding Planner can also help you estimate how many RSVPs you can expect based on how mnay of each kind of guest you have</p>
+                        <p>Defining your guest list can be the most stressful part of planning a wedding. Use the Wedding Planner to keep track of which guests are out if town, which are family, which are in the bridal party. The Wedding Planner can also help you estimate how many RSVPs you can expect based on how many of each kind of guest you have</p>
                     </section>
                     <section className="white_background">
                         <header>
@@ -92,6 +91,9 @@ class LandingPage extends Component {
                         </header>
                         <form id='signup-form' className='signup-form' onSubmit={this.handleSubmit}>
                             <div>
+                                <p>Demo User:</p>
+                                <span>Username: demouser@gmail.com</span>
+                                <span> / Password: 1234</span>
                             <label htmlFor="first-name">First name</label>
                             <input placeholder='First Name' type="text" name='first_name' id='first-name' />
                             </div>

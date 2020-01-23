@@ -51,7 +51,6 @@ class App extends Component {
   }
 
   async componentWillMount() {
-    console.log('App will mount')
     const userRes = await fetch(`${config.API_ENDPOINT}/users/current-user`, {
       method: 'POST',
       headers: {
@@ -243,7 +242,6 @@ class App extends Component {
   }
 
   render () {
-    console.log('App Render')
     const value = {
       users: this.state.users,
       venues: this.state.venues,

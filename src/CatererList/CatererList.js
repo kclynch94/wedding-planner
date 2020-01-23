@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import './CatererList.css';
 import Caterer from '../Caterer/Caterer'
 import ApiContext from '../ApiContext';
@@ -31,7 +30,7 @@ class CatererList extends Component {
                     {listCaterers}             
                 </section>
                 <div className='add-item'>
-                    <NavLink className="cssCircle plusSign" to={`/add-caterer`}>&#43;</NavLink>  
+                    <a className="cssCircle plusSign" href={`/add-caterer`}>&#43;</a>  
                 </div>
             </div>
         )
